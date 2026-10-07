@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#fff8de" />
+  <meta name="description" content="시완이가 가상의 친구들과 놀이 상황의 말을 연습하는 모바일 교육 서비스" />
+  <title>시완이의 친구 문</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%235b4ae8'/%3E%3Cpath d='M18 53V25c0-9 6-15 14-15s14 6 14 15v28H18Z' fill='%23fff0a6'/%3E%3Ccircle cx='39' cy='33' r='3' fill='%23ee744c'/%3E%3C/svg%3E" />
+  <style>
+    :root{color-scheme:light;--ink:#26314a;--muted:#66718c;--purple:#5b4ae8;--deep:#3f31bb;--coral:#ff7d67;--teal:#2aa899;--cream:#fff8de;--line:#dfe3f0;--shadow:0 18px 42px rgba(63,49,187,.16);font-family:'Arial Rounded MT Bold','Noto Sans KR','Apple SD Gothic Neo',system-ui,sans-serif}
+    *{box-sizing:border-box}html{background:#eceafb}body{margin:0;min-height:100dvh;color:var(--ink);background:radial-gradient(circle at 15% 12%,rgba(255,216,94,.5),transparent 24rem),radial-gradient(circle at 86% 84%,rgba(42,168,153,.22),transparent 24rem),#eceafb}button{font:inherit;-webkit-tap-highlight-color:transparent}button:focus-visible{outline:4px solid rgba(255,125,103,.45);outline-offset:3px}[hidden]{display:none!important}
+    .app{position:relative;width:min(100%,430px);min-height:100dvh;margin:auto;overflow:hidden;background:var(--cream);box-shadow:0 0 60px rgba(45,40,90,.22)}.sparkle{position:absolute;z-index:0;border-radius:5px;background:#ffffffcc;transform:rotate(45deg)}.sparkle.one{top:108px;left:22px;width:12px;height:12px}.sparkle.two{top:192px;right:24px;width:17px;height:17px}.sparkle.three{right:40px;bottom:92px;width:10px;height:10px}
+    .home,.play{position:relative;z-index:1;min-height:100dvh}.home{padding:max(20px,env(safe-area-inset-top)) 18px calc(28px + env(safe-area-inset-bottom))}.hello{display:grid;grid-template-columns:66px 1fr;align-items:center;gap:13px;padding:10px 14px 10px 10px;border:2px solid #fff;border-radius:24px;background:#ffffffb8;box-shadow:0 10px 26px rgba(77,67,150,.1);backdrop-filter:blur(10px)}.siwan{width:66px;height:66px;object-fit:cover;object-position:top;border:3px solid #fff;border-radius:21px;background:#d8efff}.eyebrow{margin:0 0 3px;color:var(--purple);font-size:.82rem;font-weight:900}.hello strong{display:block;font-size:1.16rem;line-height:1.35;letter-spacing:-.03em}
+    .title{padding:25px 5px 18px;text-align:center}.title h1{margin:0;font-size:clamp(2rem,9vw,2.55rem);line-height:1.14;letter-spacing:-.055em}.title p{margin:9px 0 0;color:var(--muted);font-size:1rem;font-weight:800}.doors{display:grid;grid-template-columns:1fr 1fr;gap:12px}.door{position:relative;min-width:0;height:425px;padding:0;overflow:hidden;border:0;border-radius:86px 86px 25px 25px;background:transparent;cursor:pointer;perspective:900px}.door-frame{position:absolute;inset:0;padding:10px;border-radius:inherit;background:linear-gradient(145deg,#fff,#dcdaf3);box-shadow:var(--shadow)}.door-panel{position:relative;display:block;width:100%;height:100%;overflow:hidden;border:3px solid #ffffffd9;border-radius:76px 76px 18px 18px;background:linear-gradient(180deg,#89ccff,#f6f2ff 56%,#d6c5ff);transform-origin:left;transition:transform .52s cubic-bezier(.2,.8,.2,1),filter .2s}.door[data-friend='sia'] .door-panel{background:linear-gradient(180deg,#ffc6d9,#fff4dc 56%,#c8f1e7)}.door:hover .door-panel{filter:saturate(1.08);transform:translateY(-4px)}.door.opening .door-panel{transform:rotateY(-76deg)}.door-panel:before{position:absolute;inset:15px;border:2px dashed #ffffffb8;border-radius:62px 62px 14px 14px;content:''}.door-img{position:absolute;z-index:1;top:42px;left:50%;width:158%;max-width:none;transform:translateX(-50%);pointer-events:none}.door[data-friend='sia'] .door-img{top:46px;width:150%}.door-name{position:absolute;z-index:2;right:12px;bottom:18px;left:12px;padding:12px 8px;border:3px solid #fff;border-radius:18px;color:#fff;background:var(--purple);box-shadow:0 7px 16px #3f31bb3d;font-size:1.08rem;font-weight:900}.door[data-friend='sia'] .door-name{background:#dc557f}.knob{position:absolute;z-index:3;top:52%;right:18px;width:17px;height:17px;border:4px solid #fff1b7;border-radius:50%;background:#f5ac2d;box-shadow:0 2px 5px #40331a40}.tip{display:flex;align-items:center;justify-content:center;gap:8px;margin:18px 0 0;color:var(--muted);font-size:.88rem;font-weight:800}.tip span{display:grid;width:28px;height:28px;place-items:center;border-radius:50%;background:#fff}
+    .play{display:flex;flex-direction:column;background:#f8f7ff}.play-header{display:grid;grid-template-columns:46px 1fr 46px;align-items:center;min-height:76px;padding:max(12px,env(safe-area-inset-top)) 16px 10px;background:#fff;box-shadow:0 5px 20px #362f7814}.icon{display:grid;width:44px;height:44px;place-items:center;border:0;border-radius:15px;color:var(--deep);background:#eeecff;font-size:1.4rem;font-weight:900;cursor:pointer}.play-heading{text-align:center}.play-heading strong,.play-heading span{display:block}.play-heading strong{font-size:1.1rem}.play-heading span{margin-top:3px;color:var(--muted);font-size:.78rem;font-weight:800}.progress{display:flex;justify-content:center;gap:7px;padding:14px 16px 10px}.dot{width:38px;height:7px;border-radius:99px;background:#dddaf1}.dot.done{background:var(--teal)}.dot.current{background:var(--purple);transform:scaleY(1.25)}
+    .scene{position:relative;display:grid;min-height:285px;place-items:end center;overflow:hidden;margin:0 15px;border:3px solid #fff;border-radius:28px;background:linear-gradient(180deg,#7dc7ff 0 52%,#bbe8b1 52%);box-shadow:0 12px 34px #39338021}.scene.sia-scene{background:linear-gradient(180deg,#ffc7dc 0 52%,#cbf0da 52%)}.scene:before,.scene:after{position:absolute;bottom:29px;width:72px;height:42px;border-radius:8px;background:linear-gradient(90deg,transparent 46%,#ffffff59 46% 54%,transparent 54%),#ffbf3e;content:''}.scene:before{left:28px;transform:rotate(-5deg)}.scene:after{right:24px;background-color:#f16f6f;transform:rotate(6deg)}.scene-character{position:relative;z-index:2;width:min(72%,285px);max-height:320px;object-fit:contain;object-position:bottom;filter:drop-shadow(0 9px 10px #2c2d4d2e)}
+    .bubble{position:relative;z-index:3;margin:-4px 15px 0;padding:20px 18px 18px;border:3px solid var(--purple);border-radius:24px;background:#fff;box-shadow:0 12px 28px #3d319b1f}.bubble:before{position:absolute;top:-14px;left:50%;width:22px;height:22px;border-top:3px solid var(--purple);border-left:3px solid var(--purple);background:#fff;content:'';transform:translateX(-50%) rotate(45deg)}.speaker{margin:0 0 6px;color:var(--purple);font-size:.84rem;font-weight:900}.dialogue{margin:0;font-size:1.25rem;font-weight:900;line-height:1.48;letter-spacing:-.035em}.answer-area{padding:18px 15px calc(26px + env(safe-area-inset-bottom))}.answer-title{display:flex;align-items:center;gap:8px;margin:0 0 11px;font-size:1rem}.answer-title span{display:grid;width:28px;height:28px;place-items:center;border-radius:10px;color:#fff;background:var(--coral)}.answers{display:grid;gap:9px}.answer{display:grid;grid-template-columns:34px 1fr;align-items:center;gap:10px;min-height:58px;padding:9px 13px 9px 9px;border:2px solid var(--line);border-radius:18px;color:var(--ink);background:#fff;text-align:left;cursor:pointer;transition:.14s}.answer:hover:not(:disabled){border-color:var(--purple);transform:translateY(-2px)}.answer:disabled{cursor:default}.answer.selected.good{border-color:var(--teal);background:#e9faf5}.answer.selected.try{border-color:#ed9c48;background:#fff5e6}.number{display:grid;width:34px;height:34px;place-items:center;border-radius:12px;color:var(--deep);background:#eeecff;font-weight:900}.answer-copy{font-size:1rem;font-weight:850;line-height:1.35}
+    .feedback{margin-top:12px;padding:16px;border-radius:20px;background:#fff;box-shadow:0 10px 24px #37307817}.feedback.good{border:2px solid #74cdbd}.feedback.try{border:2px solid #f1bd77}.feedback strong{display:block;margin-bottom:5px;font-size:1.08rem}.feedback p{margin:0;color:var(--muted);font-size:.94rem;font-weight:750;line-height:1.5}.primary{width:100%;min-height:56px;margin-top:12px;border:0;border-radius:18px;color:#fff;background:var(--purple);box-shadow:0 9px 20px #3f31bb3d;font-size:1.05rem;font-weight:900;cursor:pointer}.finish{display:grid;min-height:calc(100dvh - 76px);place-content:center;padding:30px 24px calc(40px + env(safe-area-inset-bottom));text-align:center}.finish img{width:150px;height:150px;margin:0 auto 20px;object-fit:cover;object-position:top;border:6px solid #fff;border-radius:46px;background:#d7edff;box-shadow:var(--shadow)}.finish h2{margin:0;font-size:2rem;letter-spacing:-.05em}.finish p{margin:10px auto 24px;color:var(--muted);font-size:1rem;font-weight:800;line-height:1.6}.finish .primary{margin:0}
+    @media(min-width:700px){body{padding:24px 0}.app{min-height:calc(100dvh - 48px);border:6px solid #ffffffbf;border-radius:38px}.home,.play{min-height:calc(100dvh - 60px)}}@media(max-width:370px){.door{height:385px}.door-img{top:56px}.door-name{font-size:.98rem}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <span class="sparkle one" aria-hidden="true"></span><span class="sparkle two" aria-hidden="true"></span><span class="sparkle three" aria-hidden="true"></span>
+    <main id="home" class="home">
+      <section class="hello" aria-label="시완이 환영 인사">
+        <img class="siwan" src="assets/siwan.png" alt="시완이 캐릭터" />
+        <div><p class="eyebrow">시완이의 친구 문</p><strong>오늘도 같이 놀 친구를 만나볼까?</strong></div>
+      </section>
+      <header class="title"><h1>누구의 문을<br />열어볼까?</h1><p>친구를 누르면 문이 열려요</p></header>
+      <section class="doors" aria-label="친구 선택">
+        <button class="door" type="button" data-friend="geonhu" aria-label="박건후의 문 열기"><span class="door-frame"><span class="door-panel"><img class="door-img" src="assets/geonhu.png" alt="장난기 있게 블록을 든 박건후" /><span class="knob" aria-hidden="true"></span><span class="door-name">박건후</span></span></span></button>
+        <button class="door" type="button" data-friend="sia" aria-label="김시아의 문 열기"><span class="door-frame"><span class="door-panel"><img class="door-img" src="assets/sia.png" alt="다정하게 블록을 건네는 김시아" /><span class="knob" aria-hidden="true"></span><span class="door-name">김시아</span></span></span></button>
+      </section>
+      <p class="tip"><span aria-hidden="true">👆</span> 만나고 싶은 친구의 문을 눌러요</p>
+    </main>
+    <main id="play" class="play" hidden>
+      <header class="play-header"><button id="back" class="icon" type="button" aria-label="친구 선택으로 돌아가기">‹</button><div class="play-heading"><strong id="play-title"></strong><span id="scene-count"></span></div><span></span></header>
+      <div id="progress" class="progress" aria-label="이야기 진행"></div>
+      <section id="scenario">
+        <div id="scene" class="scene"><img id="scene-character" class="scene-character" src="" alt="" /></div>
+        <div class="bubble"><p id="speaker" class="speaker"></p><p id="dialogue" class="dialogue"></p></div>
+        <section class="answer-area" aria-labelledby="answer-title"><h2 id="answer-title" class="answer-title"><span aria-hidden="true">?</span> 시완이는 뭐라고 말할까?</h2><div id="answers" class="answers"></div><div id="feedback" class="feedback" hidden aria-live="polite"></div><button id="next" class="primary" type="button" hidden>다음 이야기</button></section>
+      </section>
+      <section id="finish" class="finish" hidden><img src="assets/siwan.png" alt="시완이 캐릭터" /><h2>오늘 놀이 끝!</h2><p id="finish-copy"></p><button id="home-button" class="primary" type="button">다른 친구 만나기</button></section>
+    </main>
+  </div>
+  <script>
+    (() => {
+      const friends = {
+        geonhu: {
+          name: '박건후', image: 'assets/geonhu.png', alt: '노란 블록을 들고 있는 박건후',
+          scenarios: [
+            { line: '시완아, 그 노란 블록도 나 줘! 내가 큰 탑 만들 거야.', answers: [
+              ['안 돼! 절대 안 줘!', false, '건후도 더 갖고 싶어서 목소리가 커졌어. 필요한 걸 짧게 말해보자.'],
+              ['응, 다 가져.', false, '시완이가 쓸 블록도 필요해. 내 마음도 함께 말해도 괜찮아.'],
+              ['나도 두 개 필요해. 하나씩 나눠 쓰자.', true, '건후가 고개를 끄덕였어. “좋아! 그럼 더 높은 탑 만들자!”'],
+              ['아무 말 안 하고 블록을 숨긴다.', false, '건후는 왜 숨겼는지 몰라서 답답해졌어. 말로 알려주면 더 잘 알 수 있어.'],
+              ['건후 블록을 그냥 가져온다.', false, '건후가 자기 블록을 빼앗겼다고 느꼈어. 먼저 물어보는 말이 필요해.']
+            ]},
+            { line: '이 다리는 이렇게 만들어야 해. 시완이가 만든 건 이상해!', answers: [
+              ['내 것도 괜찮아. 두 방법 다 해보자.', true, '건후가 잠깐 보더니 말했어. “그럼 네 다리랑 내 다리를 이어보자!”'],
+              ['네 것만 맞아. 내 건 부술게.', false, '시완이 생각도 소중해. 서로 다른 방법을 같이 써볼 수 있어.'],
+              ['건후가 더 이상해!', false, '건후가 기분이 상해서 팔짱을 꼈어. 사람보다 방법에 대해 말해보자.'],
+              ['그럼 나는 안 놀아.', false, '쉬어도 괜찮지만, 먼저 원하는 것을 한 번 말해볼 수 있어.'],
+              ['왜 이상한지 보여줘.', true, '건후가 다리 한쪽을 가리켰어. 둘이 보고 고칠 곳을 찾기 시작했어.']
+            ]},
+            { line: '앗! 내가 탑을 너무 높게 만들었나 봐. 다 무너졌다!', answers: [
+              ['그러니까 내 말 들었어야지.', false, '건후가 속상한데 꾸중을 들으니 더 화가 났어.'],
+              ['괜찮아. 이번엔 밑을 넓게 만들자.', true, '건후가 웃었어. “좋아! 이번엔 절대 안 무너지는 탑이야!”'],
+              ['나는 모르겠어.', false, '모를 수도 있어. 같이 해볼지, 쉬고 싶은지 말하면 더 알기 쉬워.'],
+              ['하하, 건후 탑 망했다!', false, '건후가 놀림받았다고 느껴서 표정이 굳었어.'],
+              ['다시 만들래? 내가 잡아줄게.', true, '건후가 블록을 들며 말했어. “응! 이번엔 같이 만들자.”']
+            ]}
+          ]
+        },
+        sia: {
+          name: '김시아', image: 'assets/sia.png', alt: '청록색 블록을 건네는 김시아',
+          scenarios: [
+            { line: '시완아, 괜찮아. 실수로 내 집을 건드린 거지?', answers: [
+              ['응, 미안해. 같이 다시 만들까?', true, '시아가 웃으며 말했어. “응! 지붕부터 같이 올리자.”'],
+              ['난 안 건드렸어.', false, '시아는 무너지는 걸 봐서 조금 헷갈렸어. 실수는 솔직히 말해도 괜찮아.'],
+              ['그냥 다시 만들면 되잖아.', false, '시아는 속상한 마음을 알아줬으면 했어. 미안한 마음을 먼저 말해보자.'],
+              ['미안해.', true, '시아가 고개를 끄덕였어. “괜찮아, 다음엔 조심해줘.”'],
+              ['아무 말 없이 자리를 떠난다.', false, '시아는 시완이 마음을 알 수 없었어. 짧게 “미안해”라고 말해도 충분해.']
+            ]},
+            { line: '나도 잠수함 조종해보고 싶어. 다음 차례에 해도 될까?', answers: [
+              ['안 돼. 계속 내가 할 거야.', false, '시아가 같이 놀기 어렵다고 느꼈어. 차례를 정하면 둘 다 즐길 수 있어.'],
+              ['응. 내가 한 번 더 하고 바꿔줄게.', true, '시아가 손가락으로 차례를 세며 기다렸어. “응, 그다음은 내 차례!”'],
+              ['지금 바로 네가 해.', true, '시아가 말했어. “고마워. 나도 하고 나서 다시 바꿔줄게.”'],
+              ['싫은데.', false, '왜 싫은지 시아는 알기 어려워. 언제 바꿀 수 있는지 말해보자.'],
+              ['대답하지 않고 화면을 가린다.', false, '시아가 기다려야 할지 몰랐어. 짧게 차례를 알려주면 좋아.']
+            ]},
+            { line: '심해 기지에 방이 하나 남았어. 우리 뭘 만들까?', answers: [
+              ['내가 정할 거야. 넌 따라 해.', false, '시아도 생각을 말하고 싶었어. 서로 하나씩 아이디어를 내볼 수 있어.'],
+              ['나는 해저 동물 방! 시아는 뭐가 좋아?', true, '시아가 신나게 말했어. “나는 잠수정 정비소! 둘을 이어 만들자.”'],
+              ['아무거나.', false, '시아는 시완이 생각이 궁금했어. 작은 아이디어 하나만 말해도 좋아.'],
+              ['시아가 먼저 골라.', true, '시아가 잠깐 생각한 뒤 말했어. “그럼 산호 연구실은 어때?”'],
+              ['그 방은 그냥 비워둬.', false, '비워두고 싶다면 이유도 말해주면 시아가 이해하기 쉬워.']
+            ]}
+          ]
+        }
+      }
+      const $ = selector => document.querySelector(selector)
+      const home = $('#home')
+      const play = $('#play')
+      const scenario = $('#scenario')
+      const finish = $('#finish')
+      const answers = $('#answers')
+      const feedback = $('#feedback')
+      const next = $('#next')
+      let activeFriend = null
+      let index = 0
+      let answered = false
+
+      function renderProgress() {
+        $('#progress').innerHTML = friends[activeFriend].scenarios.map((_, step) => `<span class="dot ${step < index ? 'done' : step === index ? 'current' : ''}" aria-label="${step + 1}번째 이야기"></span>`).join('')
+      }
+      function renderScenario() {
+        const friend = friends[activeFriend]
+        const item = friend.scenarios[index]
+        answered = false
+        feedback.hidden = true
+        feedback.className = 'feedback'
+        next.hidden = true
+        $('#play-title').textContent = `${friend.name}와 놀기`
+        $('#scene-count').textContent = `${index + 1} / ${friend.scenarios.length} 이야기`
+        $('#speaker').textContent = friend.name
+        $('#dialogue').textContent = item.line
+        $('#scene-character').src = friend.image
+        $('#scene-character').alt = friend.alt
+        $('#scene').classList.toggle('sia-scene', activeFriend === 'sia')
+        answers.innerHTML = item.answers.map((answer, answerIndex) => `<button class="answer" type="button" data-answer="${answerIndex}"><span class="number">${answerIndex + 1}</span><span class="answer-copy">${answer[0]}</span></button>`).join('')
+        renderProgress()
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
+      function startFriend(key, door) {
+        if (door.classList.contains('opening')) return
+        door.classList.add('opening')
+        window.setTimeout(() => {
+          activeFriend = key
+          index = 0
+          home.hidden = true
+          play.hidden = false
+          scenario.hidden = false
+          finish.hidden = true
+          door.classList.remove('opening')
+          renderScenario()
+        }, 520)
+      }
+      function choose(answerIndex, button) {
+        if (answered) return
+        answered = true
+        const answer = friends[activeFriend].scenarios[index].answers[answerIndex]
+        document.querySelectorAll('.answer').forEach(item => { item.disabled = true })
+        button.classList.add('selected', answer[1] ? 'good' : 'try')
+        feedback.classList.add(answer[1] ? 'good' : 'try')
+        feedback.innerHTML = `<strong>${answer[1] ? '좋은 말이야!' : '이렇게 말하면 어떨까?'}</strong><p>${answer[2]}</p>`
+        feedback.hidden = false
+        next.textContent = index === friends[activeFriend].scenarios.length - 1 ? '놀이 마치기' : '다음 이야기'
+        next.hidden = false
+        window.setTimeout(() => feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80)
+      }
+      function showHome() {
+        play.hidden = true
+        home.hidden = false
+        activeFriend = null
+        index = 0
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
+      document.querySelectorAll('.door').forEach(door => door.addEventListener('click', () => startFriend(door.dataset.friend, door)))
+      answers.addEventListener('click', event => {
+        const button = event.target.closest('[data-answer]')
+        if (button) choose(Number(button.dataset.answer), button)
+      })
+      next.addEventListener('click', () => {
+        const friend = friends[activeFriend]
+        if (index < friend.scenarios.length - 1) {
+          index += 1
+          renderScenario()
+          return
+        }
+        scenario.hidden = true
+        $('#progress').innerHTML = ''
+        $('#scene-count').textContent = '오늘 놀이 완료'
+        $('#finish-copy').innerHTML = `${friend.name}와 세 가지 상황을 연습했어.<br />내 생각을 말한 시완이, 정말 멋져!`
+        finish.hidden = false
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      })
+      $('#back').addEventListener('click', showHome)
+      $('#home-button').addEventListener('click', showHome)
+    })()
+  </script>
+</body>
+</html>

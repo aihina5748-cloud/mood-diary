@@ -1,0 +1,19 @@
+# Dependencies and package-manager cache
+node_modules/
+.pnpm-store/
+
+# Local tooling and generated work files
+.codex-finalizer/
+.presentation-build/
+.sites-runtime/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Logs and operating-system files
+*.log
+.DS_Store
+Thumbs.db
+
